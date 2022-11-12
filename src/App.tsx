@@ -1,20 +1,7 @@
-import { useEffect, useReducer, useState } from "react"
-import { useQuery } from  '@tanstack/react-query'
-
-const getRandomNumberFromApi = async ():Promise<number> => {
-  const res = await fetch('https://www.random.org/integers/?num=1&min=1&max=500&col=1&base=10&format=plain&rnd=new')
-  const numberString = await res.text()
-
-  throw new Error('Error!')
-
-  return +numberString
-}
+import { useRandom } from "./hooks/useRandom"
 
 export const App = () => {
-  const query = useQuery(
-    ['randomNumber'],
-    getRandomNumberFromApi,
-  )
+  const query = useRandom()  
 
   return (
     <div className="bg-slate-900 text-slate-300 flex flex-col items-center justify-center min-h-screen">
